@@ -10,8 +10,14 @@ const PORT = process.env.PORT || 3001;
 //storing the express function inside of the app variable
 const app = express();
 
+//Middleware
+app.use(express.static("public"));
+
 //Notes from class:
 //GET /notes should return the notes.html
+app.get("/notes", (req, res) =>
+  res.sendFile(path.join(__dirname, "./public/notes.html"))
+);
 
 //GET * should return the index.html file
 //wild card route to direct users to index.html
