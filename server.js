@@ -24,17 +24,35 @@ app.get("/notes", (req, res) =>
 app.get("*", (req, res) => res.sendFile(path.join(__dirname, "/index.html")));
 
 //GET /api/notes should read the db.json and return all saved notes as JSON
+// app.get();
 
-//POST /api/notes should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client. Each note needs a unique ID.
-app.post;
+// //Routes referenced in  index.js
+// //fetch /api/notes - GET
+// app.get("");
 
-//Routes referenced in  index.js
-//fetch /api/notes - GET
-app.get("");
+// //POST /api/notes should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client. Each note needs a unique ID.
+// //fetch /api/notes - POST
+app.post("/api/notes", (req, res) => {
+  console.info(`${req.method} request received to add note`);
 
-//fetch /api/notes - POST
+  //object destructuring
+  const { title, text, id } = req.body;
 
-//fetch /api/notes - DELETE
+  const newNote = {
+    title,
+    text,
+    id: uuid(),
+  };
+
+  //have to conver the new object to a string to append to the JSON file
+  const noteString = JSON.stringify(newNote);
+
+  fs.appendFile(`/db/db.json`, noteString, (err) =>
+    err ? console.error(err) : console.log(`${newNote.title} saved to db.json`)
+  );
+});
+
+//fetch /api/notes - DELETE -- bonus  points
 
 app.listen(PORT, () =>
   console.log(`App is listening at http://localhost:${PORT}`)
