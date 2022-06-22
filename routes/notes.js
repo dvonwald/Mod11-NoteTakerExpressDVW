@@ -2,17 +2,6 @@ const notes = require("express").Router();
 // requiring in filesystem module
 const fs = require("fs");
 
-//GET /notes should return the notes.html -- currently not working
-// notes.get("/", (req, res) =>
-//   res.sendFile(path.join(__dirname, "./public/notes.html"))
-// );
-
-//GET /api/notes should read the db.json and return all saved notes as JSON -- currently not working
-// notes.get("/", (req, res) => {
-//   fs.readFile(/db/db.json)
-//     .then((data) => res.json(JSON.parse(data)));
-// });
-
 // //Routes referenced in  index.js
 // //fetch /api/notes - GET
 // app.get("");

@@ -1,7 +1,8 @@
 [
-  {
-    "title": "Test Title",
-    "text": "Test text",
-    "id": "something unique"
-  }
+    {
+        "title": "Test Title",
+        "text": "Test text",
+        "id": "something unique"
+    },
+    "{\"title\":\"title2\",\"text\":\"text2\",\"id\":\"bd80\"}"
 ]
