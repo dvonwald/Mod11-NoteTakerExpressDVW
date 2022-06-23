@@ -17,8 +17,8 @@ const app = express();
 
 //Middleware
 app.use(express.static("public"));
-app.use(express.json()); // body parser
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // body parser, this is needed anytime you're doing anything with JSON
+app.use(express.urlencoded({ extended: true })); // boilerplate middleware for dealing with encoding
 
 //Notes from class:
 //GET /notes should return the notes.html -- working
@@ -46,7 +46,7 @@ app.post("/api/notes", (req, res) => {
     //have to convert the new object to a string to append to the JSON file
     const noteString = JSON.stringify(newNote);
 
-    readAndAppend(noteString, `./db/db.json`, (err) =>
+    readAndAppend(JSON.parse(noteString), `./db/db.json`, (err) =>
       err
         ? console.error(err)
         : console.log(`${newNote.title} saved to db.json`)

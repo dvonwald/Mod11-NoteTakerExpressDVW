@@ -4,5 +4,19 @@
         "text": "Test text",
         "id": "something unique"
     },
-    "{\"title\":\"title2\",\"text\":\"text2\",\"id\":\"bd80\"}"
+    {
+        "title": "title2",
+        "text": "text2",
+        "id": "62c7"
+    },
+    {
+        "title": "Note",
+        "text": "Note2",
+        "id": "6760"
+    },
+    {
+        "title": "test4",
+        "text": "text4",
+        "id": "79d1"
+    }
 ]
