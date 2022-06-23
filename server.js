@@ -31,7 +31,7 @@ app.get("/api/notes", (req, res) => {
   readFromFile("./db/db.json").then((data) => res.json(JSON.parse(data)));
 });
 
-//POST /api/notes should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client. Each note needs a unique ID.
+//POST /api/notes should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client. Each note needs a unique ID. -- working finally
 app.post("/api/notes", (req, res) => {
   console.info(`${req.method} request received to add note`);
   //object destructuring
@@ -52,6 +52,22 @@ app.post("/api/notes", (req, res) => {
         : console.log(`${newNote.title} saved to db.json`)
     );
   }
+});
+
+//fetch /api/notes - DELETE -- bonus  points -- working
+app.delete("/api/notes/:id", (req, res) => {
+  const noteID = req.params.id;
+  // console.log(noteID);
+  readFromFile("./db/db.json")
+    .then((data) => JSON.parse(data))
+    .then((json) => {
+      const result = json.filter((note) => note.id !== noteID);
+      console.log(result);
+
+      writeToFile("./db/db.json", result);
+
+      res.json(`Note ${req.params.title} has been deleted`);
+    });
 });
 
 //GET * should return the index.html file
